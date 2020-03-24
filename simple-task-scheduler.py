@@ -25,7 +25,7 @@ if start_directory is None:
     start_directory = "/etc/simple-task-scheduler"
 
 if log_file is None:
-    log_file = '/var/simple-task-scheduler.log'
+    log_file = '/var/log/simple-task-scheduler.log'
 
 def log(type, message):
     f = open(log_file, 'a+')
