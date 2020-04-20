@@ -40,11 +40,15 @@ def log(type, message):
 directory = start_directory+"/conf.d"
 for filename in os.listdir(directory):
     if filename.endswith(".conf"):
-        config = configparser.RawConfigParser()
+        config = configparser.ConfigParser()
+        config.optionxform = str
         config.read(directory+"/"+filename)
-
+        
         if config.get('task', 'time') == task_time:
-            result = subprocess.run(config.get('task', 'command').split(), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            env = {}
+            if config.has_section("env"):
+                env = dict(config["env"].items())
+            result = subprocess.run(config.get('task', 'command'), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env)
             if result.stderr:
                 log('error', result.stderr.decode('utf-8'))
             else:
