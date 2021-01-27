@@ -15,7 +15,7 @@ command = echo "hi!"
 Then add a cron with the executable
 
 ```
-* 0 * * * simple-task-scheduler daily -d /home/to/my/configs
+0 0 * * * simple-task-scheduler daily -d /home/to/my/configs
 ```
 
 Configs should go in /home/to/my/configs/conf.d.
