@@ -1,6 +1,6 @@
 # Simple Task Scheduler 
 
-A simple way of running multiple tasks in crons synchronously.
+A simple way of running multiple tasks in crons in order.
 
 ## How to use
 
